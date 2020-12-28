@@ -16,11 +16,15 @@ axios.get("https://www.sephora.com/shop/foundation-makeup?ref=100082,100058,1457
     let $ = cheerio.load(response.data);
     let results = [];
     $(".css-12egk0t").each((i, element) => {
-        let title = $(element).children("a").attr("aria-label")
-        let link = `https://sephora.com${$(element).children("a").attr("href")}`
+        let title = $(element).find("a").attr("aria-label");
+        let brand = $(element).find("span[data-at*= 'sku_item_brand']").text();
+        let link = `https://sephora.com${$(element).find("a").attr("href")}`;
+        let image = `https://sephora.com${$(element).find("img").attr("src")}`;
         results.push({
             title: title,
-            link: link
+            brand: brand,
+            link: link,
+            image: image
         })
     })
     console.log(results);
