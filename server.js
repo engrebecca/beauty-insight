@@ -4,13 +4,31 @@ const mongoose = require("mongoose");
 const axios = require("axios");
 const cheerio = require("cheerio");
 
-// Initialize Express
+// Initialize Express & set up port
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-// Set up MongoDB w/ Mongoose
+// Set up the Express app to handle data parsing
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+// Static directory
+app.use(express.static("public"));
+
+// Connect to the Mongo DB
+mongoose.connect(
+    process.env.MONGODB_URI || "mongodb://localhost/beauty_aggregator",
+    {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    }
+);
 
 // Routes
-// Scrap foundation data from Sephora.com ppage, save response data using Cheerio
+
+// Scrape foundation data from Sephora.com ppage, save response data using Cheerio
 // app.get("/scrape", (req, res) => {
 axios.get("https://www.sephora.com/shop/foundation-makeup?ref=100082,100058,14577894").then(response => {
     let $ = cheerio.load(response.data);
@@ -37,4 +55,8 @@ axios.get("https://www.sephora.com/shop/foundation-makeup?ref=100082,100058,1457
     })
     console.log(results);
 })
-// })
+
+// Start the API server
+app.listen(PORT, () =>
+    console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`)
+);
