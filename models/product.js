@@ -11,7 +11,7 @@ const productSchema = new mongoose.Schema(
             required: true,
         },
         msrp: {
-            type: String,
+            type: Number,
             required: true,
         },
         shadeCount: {
