@@ -8,7 +8,7 @@ const db = require("../models/product");
 app.get("/scrape", async (req, res) => {
     let response = await axios.get("https://www.sephora.com/shop/foundation-makeup?ref=100082,100058,14577894")
     let $ = cheerio.load(response.data);
-    // let results = [];
+
     $(".css-12egk0t").each(async (i, element) => {
         let product = $(element).find("span[data-at*= 'sku_item_name']").text();
         let brand = $(element).find("span[data-at*= 'sku_item_brand']").text();
@@ -47,5 +47,7 @@ app.get("/scrape", async (req, res) => {
             );
         };
     });
+    // Send a "Scrape Complete" message to the browser
+    res.send("Scrape Complete");
 });
 module.exports = app
