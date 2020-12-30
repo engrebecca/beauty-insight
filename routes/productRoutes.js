@@ -21,18 +21,9 @@ app.get("/scrape", async (req, res) => {
         let reviews = $(element).find("span[class= 'css-1dk1ux']").text();
         let link = `https://sephora.com${$(element).find("a").attr("href")}`;
         let image = `https://sephora.com${$(element).find("img").attr("src")}`;
-        // results.push({
-        //     product: product,
-        //     brand: brand,
-        //     msrp: msrp,
-        //     shadeCount: shadeCount,
-        //     link: link,
-        //     image: image,
-        //     rating: rating,
-        //     reviews: reviews
-        // })
+
         // Create new documents in collection to log product info
-        try {
+        if (product, brand, msrp, shadeCount, link, image, rating, reviews) {
             const newProduct = await db.create({
                 product: product,
                 brand: brand,
@@ -42,16 +33,19 @@ app.get("/scrape", async (req, res) => {
                 image: image,
                 rating: rating,
                 reviews: reviews
-            });
-            res.json(newProduct);
-        }
-        // Return error response code if there is an error
-        catch (err) {
-            // return res.sendStatus(400);
-            console.log("error")
-        }
-        // console.log(results);
-    })
-
-})
+            },
+                function (err, inserted) {
+                    if (err) {
+                        // Log the error if one is encountered during the query
+                        console.log(err);
+                    }
+                    else {
+                        // Otherwise, log the inserted data
+                        console.log(inserted);
+                    }
+                }
+            );
+        };
+    });
+});
 module.exports = app
