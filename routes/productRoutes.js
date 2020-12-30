@@ -8,8 +8,8 @@ const db = require("../models/product");
 app.get("/scrape", async (req, res) => {
     let response = await axios.get("https://www.sephora.com/shop/foundation-makeup?ref=100082,100058,14577894")
     let $ = cheerio.load(response.data);
-    let results = [];
-    $(".css-12egk0t").each((i, element) => {
+    // let results = [];
+    $(".css-12egk0t").each(async (i, element) => {
         let product = $(element).find("span[data-at*= 'sku_item_name']").text();
         let brand = $(element).find("span[data-at*= 'sku_item_brand']").text();
         let msrpStr = $(element).find("span[data-at*= 'sku_item_price_list']").text();
@@ -21,19 +21,19 @@ app.get("/scrape", async (req, res) => {
         let reviews = $(element).find("span[class= 'css-1dk1ux']").text();
         let link = `https://sephora.com${$(element).find("a").attr("href")}`;
         let image = `https://sephora.com${$(element).find("img").attr("src")}`;
-        results.push({
-            product: product,
-            brand: brand,
-            msrp: msrp,
-            shadeCount: shadeCount,
-            link: link,
-            image: image,
-            rating: rating,
-            reviews: reviews
-        })
+        // results.push({
+        //     product: product,
+        //     brand: brand,
+        //     msrp: msrp,
+        //     shadeCount: shadeCount,
+        //     link: link,
+        //     image: image,
+        //     rating: rating,
+        //     reviews: reviews
+        // })
         // Create new documents in collection to log product info
         try {
-            const newProduct = db.create({
+            const newProduct = await db.create({
                 product: product,
                 brand: brand,
                 msrp: msrp,
@@ -50,7 +50,7 @@ app.get("/scrape", async (req, res) => {
             // return res.sendStatus(400);
             console.log("error")
         }
-        console.log(results);
+        // console.log(results);
     })
 
 })
