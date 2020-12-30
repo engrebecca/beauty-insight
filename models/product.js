@@ -15,8 +15,7 @@ const productSchema = new mongoose.Schema(
             required: true,
         },
         shadeCount: {
-            type: String,
-            required: true,
+            type: Number
         },
         link: {
             type: String,
@@ -27,7 +26,7 @@ const productSchema = new mongoose.Schema(
             required: true,
         },
         rating: {
-            type: String,
+            type: Number,
             required: true,
         },
         reviews: {

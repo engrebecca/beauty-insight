@@ -39,8 +39,10 @@ axios.get("https://www.sephora.com/shop/foundation-makeup?ref=100082,100058,1457
         let brand = $(element).find("span[data-at*= 'sku_item_brand']").text();
         let msrpStr = $(element).find("span[data-at*= 'sku_item_price_list']").text();
         let msrp = parseInt(msrpStr.replace("$", ""));
-        let shadeCount = $(element).find("div[class= 'css-rrjz1n']").text();
-        let rating = $(element).find("div[class= 'css-jp4jy6']").attr("aria-label");
+        let shadeCountStr = $(element).find("div[class= 'css-rrjz1n']").text();
+        let shadeCount = parseInt(shadeCountStr.split(" ")[0])
+        let ratingStr = $(element).find("div[class= 'css-jp4jy6']").attr("aria-label");
+        let rating = ratingStr.split(" ")[0];
         let reviews = $(element).find("span[class= 'css-1dk1ux']").text();
         let link = `https://sephora.com${$(element).find("a").attr("href")}`;
         let image = `https://sephora.com${$(element).find("img").attr("src")}`;
