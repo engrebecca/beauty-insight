@@ -6,7 +6,8 @@ const db = require("../models/product");
 
 // Scrape foundation data from Sephora.com ppage, save response data using Cheerio
 app.get("/scrape", async (req, res) => {
-    let response = await axios.get("https://www.sephora.com/shop/foundation-makeup?ref=100082,100058,14577894")
+    let url = req.body.url
+    let response = await axios.get(url)
     let $ = cheerio.load(response.data);
 
     $(".css-12egk0t").each(async (i, element) => {
