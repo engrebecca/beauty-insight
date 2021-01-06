@@ -2,7 +2,7 @@ import React from 'react';
 import { Jumbotron, Container } from 'reactstrap';
 import "./style.css";
 
-const Example = (props) => {
+const Jmbtrn = (props) => {
     return (
         <div>
             <Jumbotron fluid id="jumbotron">
@@ -15,4 +15,4 @@ const Example = (props) => {
     );
 };
 
-export default Example;
+export default Jmbtrn;
