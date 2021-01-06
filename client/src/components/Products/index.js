@@ -5,7 +5,7 @@ function Products(props) {
     // Returns a row for each product
     return (<>
         {props.products.map((product, i) => (
-            <div className="container" key={i}>
+            <div className="container text" key={i}>
                 <div className="row">
                     <div className="col-2 center-text">
                         <img src={product.image} alt={product.product}></img>
