@@ -8,23 +8,24 @@ function Products(props) {
             <div className="container" key={i}>
                 <div className="row">
                     <div className="col-2 center-text">
-                        <img src={employee.image} alt={employee.firstname} className="img-thumbnail"></img>
+                        <img src={product.image} alt={product.product}></img>
                     </div>
                     <div className="col-2 center-text">
-                        {employee.firstname}
+                        {product.product}
                     </div>
                     <div className="col-2 center-text">
-                        {employee.lastname}
+                        {product.brand}
                     </div>
-                    <div className="col-2 center-text">
-                        {employee.position}
+                    <div className="col center-text">
+                        {product.msrp}
                     </div>
-                    <div className="col-2 center-text">
-                        {employee.department}
+                    <div className="col center-text">
+                        {product.rating}
                     </div>
-                    <div className="col-2 center-text">
-                        {employee.email}
+                    <div className="col center-text">
+                        {product.reviews}
                     </div>
+                    <a className="col center-text" href={product.link} target="blank">Link</a>
                 </div>
             </div>
         ))
