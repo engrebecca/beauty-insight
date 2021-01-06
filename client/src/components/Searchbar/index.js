@@ -1,15 +1,16 @@
 import React from 'react';
-import { InputGroup, InputGroupAddon, Button, Input, Container } from 'reactstrap';
+import { FormGroup, Button, Input, Container, Form, Label } from 'reactstrap';
 
 const Searchbar = (props) => {
     return (
         <Container>
-            <InputGroup>
-                <Input placeholder="https://www.sephora.com" />
-                <InputGroupAddon addonType="append">
-                    <Button color="secondary">Search</Button>
-                </InputGroupAddon>
-            </InputGroup>
+            <Form>
+                <FormGroup>
+                    <Label for="searchUrl">Enter a Sephora URL for product search results you would like to analyze.</Label>
+                    <Input type="url" name="url" id="searchUrl" placeholder="https://www.sephora.com" />
+                </FormGroup>
+                <Button>Search</Button>
+            </Form>
         </Container>
     );
 };
