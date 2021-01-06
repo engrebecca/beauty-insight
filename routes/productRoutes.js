@@ -4,7 +4,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("../models/product");
 
-// Scrape foundation data from Sephora.com ppage, save response data using Cheerio
+// Route to scrape product data from Sephora.com ppage, save response data using Cheerio
 app.get("/scrape", async (req, res) => {
     let url = req.body.url
     let response = await axios.get(url)
@@ -55,4 +55,10 @@ app.get("/scrape", async (req, res) => {
     // Send a "Scrape Complete" message to the browser
     res.send("Scrape Complete");
 });
+
+// Route to get all product information stored in database
+app.get("/products", async (req, res) => {
+    let results = await db.find({})
+    res.json(results);
+})
 module.exports = app
