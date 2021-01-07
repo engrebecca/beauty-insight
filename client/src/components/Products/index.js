@@ -17,7 +17,7 @@ function Products(props) {
                         {product.brand}
                     </div>
                     <div className="col center-text">
-                        {product.msrp}
+                        ${product.msrp}
                     </div>
                     <div className="col center-text">
                         {product.rating}

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Searchbar from "../components/Searchbar";
+import Title from "../components/Title";
 import Products from "../components/Products";
 import API from "../utils/API";
 
@@ -25,6 +26,7 @@ function Homepage() {
     return (
         <div>
             <Searchbar />
+            <Title />
             <Products products={products} />
         </div>
     )
