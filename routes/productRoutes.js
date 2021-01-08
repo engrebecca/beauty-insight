@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 const db = require("../models/product");
 
 // Route to scrape product data from Sephora.com ppage, save response data using Cheerio
-app.get("/scrape", async (req, res) => {
+app.post("/scrape", async (req, res) => {
     let url = req.body.url
     let response = await axios.get(url)
     let $ = cheerio.load(response.data);
@@ -47,7 +47,6 @@ app.get("/scrape", async (req, res) => {
                 }
             );
         };
-        // });
     });
     // Send a "Scrape Complete" message to the browser
     res.send("Scrape Complete");

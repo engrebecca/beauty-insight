@@ -5,6 +5,6 @@ export default {
         return axios.get("/products");
     },
     addProducts: function (url) {
-        return axios.get("/scrape", url);
+        return axios.post("/scrape", url);
     }
 };

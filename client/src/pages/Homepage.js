@@ -29,21 +29,23 @@ function Homepage() {
     }
 
     // Function to handle search submission
-    // function searchSubmit(e) {
-    //     e.preventDefault();
-    //     if (!search) {
-    //         return
-    //     }
-
-    //     API.addProducts(search)
-    //         .then(res => {
-    //             console.log("Search completed")
-    //         })
-    // }
+    function submitSearch(e) {
+        e.preventDefault();
+        if (!search) {
+            return
+        }
+        let searchUrl = {
+            url: search
+        }
+        API.addProducts(searchUrl)
+            .then(res => {
+                console.log("Search completed")
+            })
+    }
 
     return (
         <div>
-            <Searchbar value={search} handleInputChange={handleInputChange} />
+            <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
             <Title />
             <Products products={products} />
         </div>
