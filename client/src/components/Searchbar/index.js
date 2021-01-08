@@ -8,7 +8,7 @@ const Searchbar = (props) => {
             <Form className="text" id="searchbar">
                 <FormGroup>
                     <Label for="searchUrl">Enter a Sephora URL for product search results you would like to analyze.</Label>
-                    <Input type="url" name="url" id="searchUrl" placeholder="https://www.sephora.com" />
+                    <Input value={props.value} onChange={props.handleInputChange} type="url" name="url" id="searchUrl" placeholder="https://www.sephora.com" />
                 </FormGroup>
                 <Button type="submit">Search</Button>
             </Form>
