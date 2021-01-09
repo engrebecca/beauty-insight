@@ -1,8 +1,12 @@
 import React from "react";
-import DeleteBtn from "../DeleteBtn";
+import { Button } from 'reactstrap';
 import "./style.css";
 
 function Products(props) {
+    // Function to delete product from database
+    function deleteProduct(productId) {
+        console.log(`Deleting ${productId}`)
+    }
 
     // Returns a row for each product
     return (<>
@@ -29,7 +33,7 @@ function Products(props) {
                     </div>
                     <a className="col center-text cell-format" href={product.link} target="blank">Link</a>
                     <div className="col center-text cell-format">
-                        <DeleteBtn />
+                        <Button color="danger" onClick={() => deleteProduct(product._id)}>Delete</Button>{' '}
                     </div>
                 </div>
             </div>
