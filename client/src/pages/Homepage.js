@@ -40,6 +40,7 @@ function Homepage() {
         API.addProducts(searchUrl)
             .then(res => {
                 console.log("Search completed")
+                loadProducts();
             })
     }
 

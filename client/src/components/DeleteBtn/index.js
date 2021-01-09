@@ -4,7 +4,7 @@ import { Button } from 'reactstrap';
 const Delete = (props) => {
     return (
         <div>
-            <Button color="danger">danger</Button>{' '}
+            <Button color="danger">Delete</Button>{' '}
         </div>
     );
 }
