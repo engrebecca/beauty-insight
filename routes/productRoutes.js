@@ -57,4 +57,11 @@ app.get("/products", async (req, res) => {
     let results = await db.find({})
     res.json(results);
 })
+
+// Route to delete a product by id from the database
+app.delete("/products/delete/:id", async (req, res) => {
+    await db.deleteOne({ _id: req.params.id });
+    res.send(`${req.params.id} deleted`);
+})
+
 module.exports = app

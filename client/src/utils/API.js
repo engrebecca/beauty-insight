@@ -6,5 +6,8 @@ export default {
     },
     addProducts: function (url) {
         return axios.post("/scrape", url);
+    },
+    deleteProduct: function (id) {
+        return axios.delete(`/products/delete/${id}`);
     }
 };

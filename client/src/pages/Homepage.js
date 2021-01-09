@@ -18,7 +18,6 @@ function Homepage() {
         API.getProducts()
             .then(res => {
                 setProducts(res.data);
-                console.log(res.data)
             })
             .catch(err => console.log(err));
     }
@@ -39,16 +38,16 @@ function Homepage() {
         }
         API.addProducts(searchUrl)
             .then(res => {
-                console.log("Search completed")
                 loadProducts();
             })
+            .catch(err => console.log(err))
     }
 
     return (
         <div>
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
             <Title />
-            <Products products={products} />
+            <Products products={products} reload={loadProducts} />
         </div>
     )
 }

@@ -1,11 +1,16 @@
 import React from "react";
 import { Button } from 'reactstrap';
+import API from "../../utils/API";
 import "./style.css";
 
 function Products(props) {
     // Function to delete product from database
     function deleteProduct(productId) {
-        console.log(`Deleting ${productId}`)
+        API.deleteProduct(productId)
+            .then(res => {
+                props.reload();
+            })
+            .catch(err => console.log(err))
     }
 
     // Returns a row for each product
