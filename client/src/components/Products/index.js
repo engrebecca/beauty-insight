@@ -1,4 +1,5 @@
 import React from "react";
+import DeleteBtn from "../DeleteBtn";
 import "./style.css";
 
 function Products(props) {
@@ -27,6 +28,9 @@ function Products(props) {
                         {product.reviews}
                     </div>
                     <a className="col center-text cell-format" href={product.link} target="blank">Link</a>
+                    <div className="col center-text cell-format">
+                        <DeleteBtn />
+                    </div>
                 </div>
             </div>
         ))
