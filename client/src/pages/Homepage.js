@@ -41,6 +41,7 @@ function Homepage() {
                 loadProducts();
             })
             .catch(err => console.log(err))
+        setSearch("")
     }
 
     return (
