@@ -7,7 +7,7 @@ const Jmbtrn = (props) => {
         <div>
             <Jumbotron fluid id="jumbotron">
                 <Container fluid>
-                    <p className="display-1 text-white">Beauty Product Aggregator</p>
+                    <p className="display-1 text-white">Beauty of Insight</p>
                     <h2 className="text-white">Making market analysis simple.</h2>
                 </Container>
             </Jumbotron>
