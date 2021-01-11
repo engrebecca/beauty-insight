@@ -6,8 +6,9 @@ import Spinner from "../components/Spinner";
 import API from "../utils/API";
 
 function Homepage() {
-    const [search, setSearch] = useState("")
-    const [products, setProducts] = useState([])
+    const [search, setSearch] = useState("");
+    const [products, setProducts] = useState([]);
+    const [searchPending, setSearchPending] = useState(false)
 
     // useEffect hook to load and render products from database when page loads or when a new search is made
     useEffect(() => {
@@ -34,11 +35,13 @@ function Homepage() {
         if (!search) {
             return
         }
+        setSearchPending(true);
         let searchUrl = {
             url: search
         }
         API.addProducts(searchUrl)
             .then(res => {
+                setSearchPending(false);
                 loadProducts();
             })
             .catch(err => console.log(err))
@@ -48,7 +51,10 @@ function Homepage() {
     return (
         <div>
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
-            <Spinner />
+            {searchPending ?
+                <Spinner /> :
+                <div />
+            }
             <Title />
             <Products products={products} reload={loadProducts} />
         </div>
