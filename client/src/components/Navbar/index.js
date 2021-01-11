@@ -17,7 +17,7 @@ const Nvbr = (props) => {
     return (
         <div>
             <Navbar color="light" light expand="md" id="nav" className="text">
-                <NavbarBrand href="/">Beauty Product Aggregator</NavbarBrand>
+                <NavbarBrand href="/">Beauty of Insight</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

@@ -54,7 +54,7 @@ app.post("/scrape", async (req, res) => {
 
 // Route to get all product information stored in database
 app.get("/products", async (req, res) => {
-    let results = await db.find({})
+    let results = await db.find({}).sort({ createdAt: -1 })
     res.json(results);
 })
 
