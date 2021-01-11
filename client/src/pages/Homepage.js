@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Searchbar from "../components/Searchbar";
 import Title from "../components/Title";
 import Products from "../components/Products";
+import Spinner from "../components/Spinner";
 import API from "../utils/API";
 
 function Homepage() {
@@ -47,6 +48,7 @@ function Homepage() {
     return (
         <div>
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
+            <Spinner />
             <Title />
             <Products products={products} reload={loadProducts} />
         </div>
