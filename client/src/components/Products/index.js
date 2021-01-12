@@ -18,25 +18,25 @@ function Products(props) {
         {props.products.map((product, i) => (
             <div className="container text" key={i}>
                 <div className="row">
-                    <div className="col-2 center-text mr-5 cell-format">
+                    <div className="col-lg-2 center-text mr-5 cell-format">
                         <a className="col center-text cell-format" href={product.link} target="blank"><img src={product.image} alt={product.product} className="productImg"></img></a>
                     </div>
-                    <div className="col-2 center-text cell-format">
+                    <div className="col-lg-2 center-text cell-format">
                         {product.product}
                     </div>
-                    <div className="col-2 center-text cell-format">
+                    <div className="col-lg-2 center-text cell-format">
                         {product.brand}
                     </div>
-                    <div className="col center-text cell-format">
+                    <div className="col-lg center-text cell-format">
                         ${product.msrp}
                     </div>
-                    <div className="col center-text cell-format">
-                        {product.rating}
+                    <div className="col-lg center-text cell-format">
+                        Rating: {product.rating}
                     </div>
-                    <div className="col center-text cell-format">
-                        {product.reviews}
+                    <div className="col-lg center-text cell-format">
+                        Reviews: {product.reviews}
                     </div>
-                    <div className="col center-text cell-format">
+                    <div className="col-lg center-text cell-format">
                         <Button color="danger" onClick={() => deleteProduct(product._id)}>Delete</Button>{' '}
                     </div>
                 </div>
