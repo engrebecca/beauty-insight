@@ -9,7 +9,8 @@ import API from "../utils/API";
 function Homepage() {
     const [search, setSearch] = useState("");
     const [products, setProducts] = useState([]);
-    const [searchPending, setSearchPending] = useState(false)
+    const [searchPending, setSearchPending] = useState(false);
+    const [average, setAverage] = useState([])
 
     // useEffect hook to load and render products from database when page loads or when a new search is made
     useEffect(() => {
@@ -23,6 +24,11 @@ function Homepage() {
                 setProducts(res.data);
             })
             .catch(err => console.log(err));
+        API.getAverage()
+            .then(res => {
+                // console.log(res.data[0].average.toFixed(2));
+                setAverage(res.data[0].average.toFixed(2));
+            })
     }
 
     // Function to handle input change or search url
@@ -60,6 +66,7 @@ function Homepage() {
 
     return (
         <div>
+            <p>Average MSRP: ${average}</p>
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
             {searchPending ?
                 <Spinner /> :

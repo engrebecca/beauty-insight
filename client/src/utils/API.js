@@ -12,5 +12,8 @@ export default {
     },
     deleteAll: function () {
         return axios.delete("/products/delete");
+    },
+    getAverage: function () {
+        return axios.get("/products/average")
     }
 };
