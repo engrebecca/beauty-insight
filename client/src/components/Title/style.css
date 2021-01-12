@@ -2,3 +2,13 @@
 font-weight: bold;
 font-size: 20px;
 }
+
+/* Hide title component if on a smaller screen */
+@media only screen and (min-width: 0px) and (max-width: 800px) {
+    .title { display: none; }
+  }
+  
+  /* Show title component if on a larger screen */
+  @media only screen and (min-width: 801px) and (max-width: 1024px) {
+    .title { display: block; }
+  }

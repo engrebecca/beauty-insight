@@ -3,7 +3,7 @@ import "./style.css";
 
 function Title() {
     return (
-        <div className="container text">
+        <div className="container text title">
             <div className="row">
                 <div className="col-2 center-text mr-5 font-style">
                     Image
