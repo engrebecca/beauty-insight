@@ -19,7 +19,7 @@ function Products(props) {
             <div className="container text" key={i}>
                 <div className="row">
                     <div className="col-2 center-text mr-5 cell-format">
-                        <img src={product.image} alt={product.product}></img>
+                        <a className="col center-text cell-format" href={product.link} target="blank"><img src={product.image} alt={product.product}></img></a>
                     </div>
                     <div className="col-2 center-text cell-format">
                         {product.product}
@@ -36,7 +36,6 @@ function Products(props) {
                     <div className="col center-text cell-format">
                         {product.reviews}
                     </div>
-                    <a className="col center-text cell-format" href={product.link} target="blank">Link</a>
                     <div className="col center-text cell-format">
                         <Button color="danger" onClick={() => deleteProduct(product._id)}>Delete</Button>{' '}
                     </div>

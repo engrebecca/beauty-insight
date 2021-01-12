@@ -24,9 +24,6 @@ function Title() {
                     Reviews
                 </div>
                 <div className="col center-text font-style">
-                    URL
-                </div>
-                <div className="col center-text font-style">
                 </div>
             </div>
         </div>
