@@ -6,3 +6,11 @@
     font-family: 'Fjalla One', sans-serif;
     text-shadow: 3px 3px black;
 }
+
+.jumbo-text{
+    font-size: 60px;
+}
+
+.jumbo-subtext{
+    font-size: 30px;
+}
