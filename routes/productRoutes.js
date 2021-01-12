@@ -54,7 +54,7 @@ app.post("/scrape", async (req, res) => {
 
 // Route to get all product information stored in database
 app.get("/products", async (req, res) => {
-    let results = await db.find({}).sort({ createdAt: -1 })
+    let results = await db.find({}).sort({ createdAt: -1 });
     res.json(results);
 })
 
@@ -68,6 +68,12 @@ app.delete("/products/delete/:id", async (req, res) => {
 app.delete("/products/delete", async (req, res) => {
     await db.deleteMany({});
     res.send("All products deleted");
+})
+
+// Route to get average of all product MSRPs
+app.get("/products/average", async (req, res) => {
+    let average = await db.aggregate([{ $group: { _id: null, average: { $avg: "$msrp" } } }]);
+    res.json(average)
 })
 
 module.exports = app
