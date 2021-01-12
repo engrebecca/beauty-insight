@@ -9,5 +9,8 @@ export default {
     },
     deleteProduct: function (id) {
         return axios.delete(`/products/delete/${id}`);
+    },
+    deleteAll: function () {
+        return axios.delete("/products/delete");
     }
 };

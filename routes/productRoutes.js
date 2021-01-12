@@ -64,4 +64,10 @@ app.delete("/products/delete/:id", async (req, res) => {
     res.send(`${req.params.id} deleted`);
 })
 
+// Route to delete all saved products from the database
+app.delete("/products/delete", async (req, res) => {
+    await db.deleteMany({});
+    res.send("All products deleted");
+})
+
 module.exports = app

@@ -4,8 +4,7 @@ import {
     Navbar,
     NavbarToggler,
     NavbarBrand,
-    Nav,
-    Button
+    Nav
 } from 'reactstrap';
 
 const Nvbr = (props) => {
@@ -13,18 +12,12 @@ const Nvbr = (props) => {
 
     const toggle = () => setIsOpen(!isOpen);
 
-    function deleteAllProducts() {
-        console.log("Delete all products");
-
-    }
-
     return (
         <div>
             <Navbar color="light" light expand="md" id="nav" className="text">
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        <Button color="danger" onClick={deleteAllProducts}>Delete All Products</Button>{' '}
                     </Nav>
                 </Collapse>
                 <NavbarBrand href="/">Beauty of Insight</NavbarBrand>

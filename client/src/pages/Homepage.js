@@ -3,6 +3,7 @@ import Searchbar from "../components/Searchbar";
 import Title from "../components/Title";
 import Products from "../components/Products";
 import Spinner from "../components/Spinner";
+import { Button } from "reactstrap"
 import API from "../utils/API";
 
 function Homepage() {
@@ -48,6 +49,15 @@ function Homepage() {
         setSearch("")
     }
 
+    // Function to delete all products
+    function deleteAllProducts() {
+        API.deleteAll()
+            .then(res => {
+                loadProducts();
+            })
+
+    }
+
     return (
         <div>
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
@@ -57,6 +67,11 @@ function Homepage() {
             }
             <Title />
             <Products products={products} reload={loadProducts} />
+            {
+                products.length > 1 ?
+                    <Button color="danger" onClick={deleteAllProducts}>Delete All Products</Button> :
+                    <div />
+            }
         </div>
     )
 }
