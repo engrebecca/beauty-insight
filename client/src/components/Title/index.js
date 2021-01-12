@@ -5,7 +5,7 @@ function Title() {
     return (
         <div className="container text title">
             <div className="row">
-                <div className="col-2 center-text mr-5 font-style">
+                <div className="col-2 center-text font-style">
                     Image
                 </div>
                 <div className="col-2 center-text font-style">
