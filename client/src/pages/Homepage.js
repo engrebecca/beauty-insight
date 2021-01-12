@@ -87,7 +87,7 @@ function Homepage() {
             <Products products={products} reload={loadProducts} />
             {
                 products.length > 1 ?
-                    <Button color="danger" onClick={deleteAllProducts}>Delete All Products</Button> :
+                    <Button color="danger" onClick={deleteAllProducts} className="my-5">Delete All Products</Button> :
                     <div />
             }
         </div>
