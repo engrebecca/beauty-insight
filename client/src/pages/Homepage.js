@@ -5,6 +5,7 @@ import Products from "../components/Products";
 import Spinner from "../components/Spinner";
 import { Button } from "reactstrap"
 import API from "../utils/API";
+import "./style.css";
 
 function Homepage() {
     const [search, setSearch] = useState("");
@@ -26,7 +27,6 @@ function Homepage() {
             .catch(err => console.log(err));
         API.getAverage()
             .then(res => {
-                // console.log(res.data[0].average.toFixed(2));
                 res.data[0] ?
                     setAverage(res.data[0].average.toFixed(2)) :
                     setAverage(0)
@@ -70,7 +70,7 @@ function Homepage() {
         <div>
             {
                 products.length > 1 ?
-                    <p>Average MSRP: ${average}</p> :
+                    <p className="avgFont">Average MSRP: ${average}</p> :
                     <p></p>
             }
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
