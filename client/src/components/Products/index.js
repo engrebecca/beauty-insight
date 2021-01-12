@@ -19,7 +19,7 @@ function Products(props) {
             <div className="container text" key={i}>
                 <div className="row">
                     <div className="col-2 center-text mr-5 cell-format">
-                        <a className="col center-text cell-format" href={product.link} target="blank"><img src={product.image} alt={product.product}></img></a>
+                        <a className="col center-text cell-format" href={product.link} target="blank"><img src={product.image} alt={product.product} className="productImg"></img></a>
                     </div>
                     <div className="col-2 center-text cell-format">
                         {product.product}
