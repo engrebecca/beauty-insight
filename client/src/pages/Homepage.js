@@ -27,7 +27,9 @@ function Homepage() {
         API.getAverage()
             .then(res => {
                 // console.log(res.data[0].average.toFixed(2));
-                setAverage(res.data[0].average.toFixed(2));
+                res.data[0] ?
+                    setAverage(res.data[0].average.toFixed(2)) :
+                    setAverage(0)
             })
     }
 
@@ -66,7 +68,11 @@ function Homepage() {
 
     return (
         <div>
-            <p>Average MSRP: ${average}</p>
+            {
+                products.length > 1 ?
+                    <p>Average MSRP: ${average}</p> :
+                    <p></p>
+            }
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
             {searchPending ?
                 <Spinner /> :
