@@ -78,7 +78,12 @@ function Homepage() {
                 <Spinner /> :
                 <div />
             }
-            <Title />
+            {/* <Title /> */}
+            {
+                products.length > 1 ?
+                    <Title /> :
+                    <p></p>
+            }
             <Products products={products} reload={loadProducts} />
             {
                 products.length > 1 ?
