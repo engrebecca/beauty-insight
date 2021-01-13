@@ -14,6 +14,9 @@ app.use(express.json());
 // Static directory
 app.use(express.static("public"));
 
+// Routes
+app.use(routes);
+
 // Connect to the Mongo DB
 mongoose.connect(
     process.env.MONGODB_URI || "mongodb://localhost/beauty_aggregator",
@@ -24,9 +27,6 @@ mongoose.connect(
         useFindAndModify: false
     }
 );
-
-// Routes
-app.use(routes);
 
 // Start the API server
 app.listen(PORT, () =>
