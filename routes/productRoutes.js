@@ -77,10 +77,9 @@ app.get("/products/average", async (req, res) => {
     res.json(average)
 })
 
-if (process.env.NODE_ENV === "production") {
-    app.use((req, res) => {
-        res.sendFile(path.join(__dirname, "../client/build/index.html"))
-    })
-}
+// If no valid API routes are hit, send homepage
+app.use((req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"))
+})
 
 module.exports = app
