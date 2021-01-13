@@ -13,12 +13,12 @@ function Homepage() {
     const [searchPending, setSearchPending] = useState(false);
     const [average, setAverage] = useState([])
 
-    // useEffect hook to load and render products from database when page loads or when a new search is made
+    // useEffect hook to load and render products from database when page loads
     useEffect(() => {
         loadProducts()
     }, [])
 
-    // Function to load products from database
+    // Function to load products from database and get average MSRP for all products
     function loadProducts() {
         API.getProducts()
             .then(res => {
@@ -33,7 +33,7 @@ function Homepage() {
             })
     }
 
-    // Function to handle input change or search url
+    // Function to handle input change for search url
     function handleInputChange(e) {
         setSearch(e.target.value)
     }
@@ -44,10 +44,12 @@ function Homepage() {
         if (!search) {
             return
         }
+        // Set searchPending to true so spinner shows data is loading
         setSearchPending(true);
         let searchUrl = {
             url: search
         }
+        // Add products to the database based on the searched URL, then load products to page and hide spinner
         API.addProducts(searchUrl)
             .then(res => {
                 setSearchPending(false);
@@ -68,23 +70,26 @@ function Homepage() {
 
     return (
         <div>
+            {/* If there are products in the database, render the MSRP average to page */}
             {
                 products.length > 1 ?
                     <p className="avgFont">Average MSRP: ${average}</p> :
                     <p></p>
             }
             <Searchbar value={search} handleInputChange={handleInputChange} submit={submitSearch} />
+            {/* If product data is being loaded from search, show spinner */}
             {searchPending ?
                 <Spinner /> :
                 <div />
             }
-            {/* <Title /> */}
+            {/* If there are products in the database, show the title component */}
             {
                 products.length > 1 ?
                     <Title /> :
                     <p></p>
             }
             <Products products={products} reload={loadProducts} />
+            {/* If there is more than one product rendered to page, render delete all button*/}
             {
                 products.length > 1 ?
                     <Button color="danger" onClick={deleteAllProducts} className="my-5">Delete All Products</Button> :
