@@ -24,7 +24,7 @@ app.post("/scrape", async (req, res) => {
         let link = `https://sephora.com${$(element).find("a").attr("href")}`;
         let image = `https://sephora.com${$(element).find("img").attr("src")}`;
 
-        // Create new documents in collection to log product info
+        // Create new documents in collection to log scraped product info
         if (product, brand, msrp, link, image, ratingStr, reviews) {
             await db.create({
                 product: product,
@@ -77,7 +77,7 @@ app.get("/products/average", async (req, res) => {
     res.json(average)
 })
 
-// Return all request to React app
+// Return all requests to React app
 if (process.env.NODE_ENV === "production") {
     app.get("*", (req, res) => {
         res.sendFile(path.join(__dirname, "../client/build/index.html"))
