@@ -3,6 +3,7 @@ const app = express();
 const axios = require("axios");
 const cheerio = require("cheerio");
 const db = require("../models/product");
+const path = require("path");
 
 // Route to scrape product data from Sephora.com ppage, save response data using Cheerio
 app.post("/scrape", async (req, res) => {
@@ -75,5 +76,11 @@ app.get("/products/average", async (req, res) => {
     let average = await db.aggregate([{ $group: { _id: null, average: { $avg: "$msrp" } } }]);
     res.json(average)
 })
+
+if (process.env.NODE_ENV === "production") {
+    app.use((req, res) => {
+        res.sendFile(path.join(__dirname, "../client/build/index.html"))
+    })
+}
 
 module.exports = app
