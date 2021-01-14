@@ -1,7 +1,7 @@
 # 💄 Beauty of Insight 💄
 
 ## Description
-Competitive market analysis is often a painstaking process that involves hours of research to build spreadsheets of comprehensive data. Beauty of Insight is a market analysis tool that allows users to simplify and shorten this process by scraping data from competitive websites. As a former brand and product manger in the beauty industry, I built this tool to gather data insights from Sephora, an industry leader in the prestige market. Users can enter a Sephora product category shop URL and the top products will be saved and displayed. Information such as a product's image, name, brand, MSRP, rating, and reviews are all captured and displayed. The tool also calculates and displays the average MSRP for all products. 
+Competitive market analysis is often a painstaking process that involves hours of research to build spreadsheets of comprehensive data. Beauty of Insight is a beauty market analysis tool that allows users to simplify and shorten this process by scraping data from competitive websites. As a former brand and product manger in the beauty industry, I built this tool to automate much of the process I previously utilized to gather data insights from industry leaders in the prestige beauty market. Users can enter a Sephora product category shop URL and the top products will be saved and displayed. Information such as a product's image, name, brand, MSRP, rating, and reviews are all captured and displayed. The tool also calculates and displays the average MSRP for all products. 
 
 ## Features
 * React is used to create the application and the user interface components
